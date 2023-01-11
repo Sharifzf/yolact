@@ -128,6 +128,19 @@ dataset_base = Config({
     'label_map': None
 })
 
+nearmaps_dataset = dataset_base.copy({
+    'name': 'NearMaps Training',
+
+    'train_images': r'D:\Pathway Recog\Nearmaps\Training dataset\data_dataset_coco',
+    'train_info':   r'D:\Pathway Recog\Nearmaps\Training dataset\data_dataset_coco\annotations.json',
+
+    'valid_images': r'D:\Pathway Recog\Nearmaps\Testing dataset',
+    'valid_info':   r'D:\Pathway Recog\Nearmaps\Testing dataset\dataset.json',
+
+    'has_gt': False,
+    'class_names': ('Footpath', 'Wombat Crossing', 'Tree', 'Watermark')
+})
+
 coco2014_dataset = dataset_base.copy({
     'name': 'COCO 2014',
     
@@ -657,8 +670,8 @@ yolact_base_config = coco_base_config.copy({
     'name': 'yolact_base',
 
     # Dataset stuff
-    'dataset': coco2017_dataset,
-    'num_classes': len(coco2017_dataset.class_names) + 1,
+    'dataset': nearmaps_dataset,
+    'num_classes': len(nearmaps_dataset.class_names) + 1,
 
     # Image Size
     'max_size': 550,
